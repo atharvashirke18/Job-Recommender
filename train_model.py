@@ -346,6 +346,7 @@ def main():
     # Evaluate
     cv_metrics = trainer.evaluate(X_cv, y_cv, 'Validation')
     test_metrics = trainer.evaluate(X_test, y_test, 'Test')
+    train_metrics = trainer.evaluate(X_train, y_train, 'Train')
     
     # Save model
     trainer.save_model()
@@ -358,7 +359,9 @@ def main():
     print("TRAINING COMPLETE!")
     print("="*80)
     print(f"Total time: {duration:.1f} seconds ({duration/60:.1f} minutes)")
-    print(f"Test Accuracy: {test_metrics['accuracy']*100:.2f}%")
+    print(f"Train Accuracy: {train_metrics['accuracy'] * 100:.2f}%")
+    print(f"CV Accuracy:    {cv_metrics['accuracy'] * 100:.2f}%")
+    print(f"Test Accuracy:  {test_metrics['accuracy'] * 100:.2f}%")
     print(f"Test AUC: {test_metrics['auc']:.4f}")
     print(f"Test Recall: {test_metrics['recall']:.4f}")
     print(f"Test F1: {test_metrics['f1']:.4f}")
