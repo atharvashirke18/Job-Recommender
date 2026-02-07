@@ -8,7 +8,6 @@ from datetime import datetime, timedelta
 np.random.seed(42)
 random.seed(42)
 
-# Expanded skill sets for more diversity
 skill_pool = {
     'data_science': [
         'Python', 'R', 'Machine Learning', 'Deep Learning', 'SQL', 'NoSQL',
@@ -301,7 +300,7 @@ def generate_applications(jobs_df, candidates_df, n_applications=200000, chunk_s
     print(f"  ✓ Saved {len(applications_df):,} applications to applications.csv")
 
     return applications_df
-# Main execution
+
 if __name__ == "__main__":
     start_time = datetime.now()
 
