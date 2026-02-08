@@ -1,17 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
-import { NavLink } from './components/Navbar/NavbarElements';
+//import './Navbar.css';
+import {Nav , Bars, NavLink, NavMenu } from './components/Navbar/NavbarElements';
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <NavLink to="/components/JobRecommendation/index.js">Job Recommendation</NavLink>
-        <li><Link to="/SkillAnalysis">Skill Analysis</Link></li>
-      </ul>
-    </nav>
+    <Nav>
+      <Bars />
+      <NavMenu>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/JobRecommendation">Job Recommendation</NavLink>
+        <NavLink to="/SkillAnalysis">Skill Analysis</NavLink>
+      </NavMenu>
+    </Nav>
   );
 };
 
