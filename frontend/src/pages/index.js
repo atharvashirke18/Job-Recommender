@@ -1,6 +1,30 @@
 import React, { useState } from "react";
 import '../Navbar.css';
 
+var FinalResponse;
+
+async function getRecommendations(input) {
+  const response = await fetch('http://localhost:5000/api/recommend', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      skills: input.skills,
+      experience_years: input.experience_years,
+      expected_salary: input.expected_salary,
+      preferred_location: input.preferred_location,
+      top_n: input.top_n
+    })
+  });
+  
+  if (!response.ok) {
+    throw new Error('API request failed');
+  }
+  console.log( response.json);
+  return await response.json();
+}
+
 function MyForm() {
     const [formData , setFormData] = useState({
         skills:'',
@@ -23,7 +47,9 @@ function MyForm() {
         e.preventDefault();
 
         const {skills , experience_years , expected_salary , preferred_location , top_n} = formData;
+        FinalResponse = getRecommendations(formData);
         console.log("Form Submitted", {skills, experience_years ,expected_salary, preferred_location, top_n});
+        console.log("Response: ", FinalResponse);
     }
 
      return (
@@ -33,11 +59,11 @@ function MyForm() {
             <br />
             </label>
             <label>Enter your experience: <br />
-                <input type="text" name="experience_years" value={formData.experience_years} onChange={handleChange}/>
+                <input type="number" name="experience_years" value={formData.experience_years} onChange={handleChange}/>
             <br />
             </label>
             <label>Enter your salary expectations: <br />
-                <input type="text" name="expected_salary" value={formData.expected_salary} onChange={handleChange}/>
+                <input type="number" name="expected_salary" value={formData.expected_salary} onChange={handleChange}/>
             <br />
             </label>
             <label>Enter your preferred location: <br />
