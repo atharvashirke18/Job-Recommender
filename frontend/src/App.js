@@ -1,17 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-// import Home from './Home'
-import JobRecommendation from './components/JobRecommendation';
-// import SkillAnalysis from './components/SkillAnalysis';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages'
+import JobRecommendation from './pages/JobRecommendation';
+import SkillAnalysis from './pages/SkillAnalysis';
 
 function App() {
   return (
       <Router>
         <Navbar />
         <Routes>
-          <Route path='/components/JobRecommendation' element={<NavLink/>} />
+          <Route path='/' element={<Home />} />
+          <Route path='/JobRecommendation' element={<JobRecommendation/>} />
+          <Route path='/SkillAnalysis' element={<SkillAnalysis/>} />
 
         </Routes>
       </Router>
