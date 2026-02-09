@@ -1,4 +1,6 @@
 import React from 'react';
+import { FinalResponse } from '../components/Form';
+import { formSubmitted } from '../components/Form';
 
 const languages = [
     { name: "JavaScript", founder: "Brendan Eich" },
@@ -7,6 +9,10 @@ const languages = [
     { name: "C++", founder: "Bjarne Stroustrup" },
     { name: "Ruby", founder: "Yukihiro Matsumoto" },
 ];
+
+
+const reponse = FinalResponse;
+console.log('Final Response from JobRecommendations.js: ', reponse);
 
 const listItems = languages.map(key =>
     <li style={{
@@ -27,27 +33,12 @@ const listItems = languages.map(key =>
 
 const JobRecommendation = () => {
 return (
-        <div style={{ textAlign: "center" }}>
-            <ul style={{padding:"10px" , display: "flex", flexWrap: "wrap"}}>
-                {/* {languages.map((language, index) => (
-                    <li
-                        key={index}
-                        style={{
-                            width:"100vw",
-                            alignSelf: "center",
-                            marginBottom: "10px",
-                            padding: "20px",
-                            backgroundColor: "#f4f4f4",
-                            borderRadius: "4px",
-                        }}
-                    >
-                        <strong>{language.name}</strong> - Founder:{" "}
-                        {language.founder}
-                    </li>
-                ))} */}
-                {listItems}
-            </ul>
-        </div>
+
+            <div style={{ textAlign: "center" }}>
+                <ul style={{padding:"10px" , display: "flex", flexWrap: "wrap"}}>
+                    {listItems}
+                </ul>
+            </div>
     );
 };
 
